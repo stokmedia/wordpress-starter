@@ -1,0 +1,53 @@
+version: "3"
+services:
+    wordpress:
+        image: visiblevc/wordpress
+
+        # required for mounting bindfs
+        cap_add:
+            - SYS_ADMIN
+        devices:
+            - /dev/fuse
+        # required on certain cloud hosts
+        security_opt:
+            - apparmor:unconfined
+
+        ports:
+            - 8083:80
+        volumes:
+            - ./data:/data
+            - ./hors/hors:/app/wp-content/themes/hors
+        environment:
+            DB_NAME: hors
+            DB_PASS: root
+            PLUGINS: >-
+                classic-editor
+                shortcode-ui
+                optimus
+                redirection
+                regenerate-thumbnails
+                safe-svg
+                simple-custom-post-order
+                wordpress-seo
+                contact-form-7
+                [advanced-custom-fields-pro]http://www.stok.se/plugin-repo/advanced-custom-fields-pro.zip
+                [wp-migrate-db-pro]http://www.stok.se/plugin-repo/wp-migrate-db-pro-1.8.1.zip
+                [wp-migrate-db-pro-cli]http://www.stok.se/plugin-repo/wp-migrate-db-pro-cli-1.3.2.zip
+                [wp-migrate-db-pro-media-files]http://www.stok.se/plugin-repo/wp-migrate-db-pro-media-files-1.4.9.zip
+            URL_REPLACE: http://localhost:8083
+            WP_DEBUG: 'false'
+
+    db:
+        image: mariadb:10 # or mysql:5.7
+        volumes:
+            - data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 22225:80
+
+volumes:
+    data:

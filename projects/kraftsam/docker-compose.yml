@@ -1,0 +1,42 @@
+version: "3"
+services:
+    wordpress:
+        image: visiblevc/wordpress
+
+        # required for mounting bindfs
+        cap_add:
+            - SYS_ADMIN
+        devices:
+            - /dev/fuse
+        # required on certain cloud hosts
+        security_opt:
+            - apparmor:unconfined
+
+        ports:
+            - 8095:80
+        volumes:
+            - ./data:/data
+            - ./code/kraftsam/kraftsam:/app/wp-content/themes/kraftsam
+        environment:
+            DB_NAME: systerp
+            DB_PASS: root
+            SERVER_NAME: systerp.local
+            PLUGINS: >-
+                [advanced-custom-fields-pro]http://www.stok.se/plugin-repo/advanced-custom-fields-pro.zip
+            URL_REPLACE: http://localhost:8095
+            WP_DEBUG: 'false'
+
+    db:
+        image: mariadb:10 # or mysql:5.7
+        volumes:
+            - data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 22295:80
+
+volumes:
+    data:
