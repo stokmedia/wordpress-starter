@@ -16,7 +16,7 @@ services:
             - 8082:80
         volumes:
             - ./data:/data
-            - ./froda/froda:/app/wp-content/themes/froda
+            - ./code/froda/froda:/app/wp-content/themes/froda
         environment:
             DB_NAME: froda
             DB_PASS: root

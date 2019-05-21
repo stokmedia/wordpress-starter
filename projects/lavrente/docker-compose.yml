@@ -17,8 +17,8 @@ services:
             - 444:444
         volumes:
             - ./data:/data
-            - ./progressive-theme:/app/wp-content/themes
-            - ./topzly-plugin:/app/wp-content/plugins/topzly-plugin
+            - ./code/progressive-theme:/app/wp-content/themes
+            - ./code/topzly-plugin:/app/wp-content/plugins/topzly-plugin
         environment:
             DB_NAME: lavrente
             DB_PASS: root

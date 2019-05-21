@@ -16,12 +16,12 @@ services:
             - 8085:80
         volumes:
             - ./data:/data
-            - ./hbon_wp_discover/wordpress/wp-content/plugins/level3-cdn:/app/wp-content/plugins/level3-cdn
-            - ./hbon_wp_discover/wordpress/wp-content/themes/hbo-discover-v3:/app/wp-content/themes/hbo-discover-v3
-            - ./plugins/polylang-wpai-master:/app/wp-content/plugins/polylang-wpai-master
-            - ./plugins/wp-all-export-pro:/app/wp-content/plugins/wp-all-export-pro
-            - ./plugins/wp-all-import-pro:/app/wp-content/plugins/wp-all-import-pro
-            - ./vendor:/app/vendor
+            - ./code/hbon_wp_discover/wordpress/wp-content/plugins/level3-cdn:/app/wp-content/plugins/level3-cdn
+            - ./code/hbon_wp_discover/wordpress/wp-content/themes/hbo-discover-v3:/app/wp-content/themes/hbo-discover-v3
+            - ./code/plugins/polylang-wpai-master:/app/wp-content/plugins/polylang-wpai-master
+            - ./code/plugins/wp-all-export-pro:/app/wp-content/plugins/wp-all-export-pro
+            - ./code/plugins/wp-all-import-pro:/app/wp-content/plugins/wp-all-import-pro
+            - ./code/vendor:/app/vendor
         environment:
             DB_NAME: mno_ua
             DB_PASS: root
