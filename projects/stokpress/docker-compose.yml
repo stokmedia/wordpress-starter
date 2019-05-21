@@ -19,6 +19,7 @@ services:
             - ./data:/data
             - ./code/stokpress:/app/wp-content/themes/stokpress
             - ./scripts:/docker-entrypoint-initwp.d
+            - ./code/centra-plugins/ecommerce-silk-connection:/app/wp-content/plugins/ecommerce-silk-connection
         environment:
             DB_NAME: wordpress
             DB_PASS: root
