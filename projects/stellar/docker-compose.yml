@@ -1,0 +1,48 @@
+version: "3"
+services:
+    wordpress:
+        image: visiblevc/wordpress
+
+        # required for mounting bindfs
+        cap_add:
+            - SYS_ADMIN
+        devices:
+            - /dev/fuse
+        # required on certain cloud hosts
+        security_opt:
+            - apparmor:unconfined
+
+        ports:
+            - 8081:80
+            - 443:443
+        volumes:
+            - ./data:/data
+            - ./code/stokpress:/app/wp-content/themes/stokpress
+            - ./scripts:/docker-entrypoint-initwp.d
+            - ./code/centra-plugins/ecommerce-silk-connection:/app/wp-content/plugins/ecommerce-silk-connection
+        environment:
+            DB_NAME: wordpress
+            DB_PASS: root
+            PLUGINS: >-
+                classic-editor
+                safe-svg
+                [advanced-custom-fields-pro]http://www.stok.se/plugin-repo/advanced-custom-fields-pro.zip
+                [polylang-pro]http://www.stok.se/plugin-repo/polylang-pro.zip
+                [soil]https://github.com/roots/soil/archive/3.7.3.zip
+
+    db:
+        image: mariadb:10 # or mysql:5.7
+        volumes:
+            - data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        ports: 
+            - 4307:3306
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - 22222:80
+
+volumes:
+    data:
