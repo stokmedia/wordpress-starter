@@ -13,11 +13,10 @@ services:
             - apparmor:unconfined
 
         ports:
-            - 8081:80
-            - 443:443
+            - 9080:80
         volumes:
             - ./data:/data
-            - ./code/stokpress:/app/wp-content/themes/stokpress
+            - ./code/stellar:/app/wp-content/themes/stellar
             - ./scripts:/docker-entrypoint-initwp.d
             - ./code/centra-plugins/ecommerce-silk-connection:/app/wp-content/plugins/ecommerce-silk-connection
         environment:
@@ -37,12 +36,12 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: root
         ports: 
-            - 4307:3306
+            - 5306:3306
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         ports:
-            - 22222:80
+            - 32222:80
 
 volumes:
     data:
