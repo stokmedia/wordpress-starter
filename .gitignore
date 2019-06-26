@@ -20,3 +20,7 @@ wp-content/*
 
 # WordPress Starter Dev Files
 /docker-compose.yml
+
+# Ignore the content of the code forlder
+projects/stellar/code/*
+
