@@ -265,15 +265,15 @@ check_themes() {
         fi
     ) &
 
-    (
-        mapfile -t remove_list < <(comm -13 \
-            <(echo "${!theme_deps[@]}" "${theme_volumes[@]}" | tr ' ' '\n' | sort -u) \
-            <(wp theme list --field=name | sort -u))
-
-        if [[ ${#remove_list[@]} -gt 0 ]]; then
-            wp --color theme delete "${remove_list[@]}" |& logger
-        fi
-    ) &
+#    (
+#        mapfile -t remove_list < <(comm -13 \
+#            <(echo "${!theme_deps[@]}" "${theme_volumes[@]}" | tr ' ' '\n' | sort -u) \
+#            <(wp theme list --field=name | sort -u))
+#
+#        if [[ ${#remove_list[@]} -gt 0 ]]; then
+#            wp --color theme delete "${remove_list[@]}" |& logger
+#        fi
+#    ) &
 
     wait
 }

@@ -22,5 +22,6 @@ wp-content/*
 /docker-compose.yml
 
 # Ignore the content of the code forlder
-projects/stellar/code/*
-
+/projects/stellar/code/
+/projects/skhoop/code/
+/projects/linum/code/
