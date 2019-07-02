@@ -16,7 +16,7 @@ services:
             - 7080:80
         volumes:
             - ./data:/data
-            - ./code/stokpress:/app/wp-content/themes/stokpress
+            - ./code/linum:/app/wp-content/themes/linum
             - ./scripts:/docker-entrypoint-initwp.d
             - ./code/centra-plugins/ecommerce-silk-connection:/app/wp-content/plugins/ecommerce-silk-connection
         environment:
