@@ -25,3 +25,8 @@ wp-content/*
 /projects/stellar/code/
 /projects/skhoop/code/
 /projects/linum/code/
+
+# Ignore the uploads
+/projects/stellar/upload
+/projects/skhoop/upload
+/projects/linum/upload
