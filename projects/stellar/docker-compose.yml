@@ -19,6 +19,7 @@ services:
             - ./uploads:/app/wp-content/uploads
             - ./code/stellar:/app/wp-content/themes/stellar
             - ./scripts:/docker-entrypoint-initwp.d
+            - ./tweaks.ini:/usr/local/etc/php/conf.d/tweaks.ini # Optional tweaks to the php.ini config
             - ./code/centra-plugins/ecommerce-silk-connection:/app/wp-content/plugins/ecommerce-silk-connection
         environment:
             WP_DEBUG: 'true'
