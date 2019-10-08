@@ -21,14 +21,18 @@ wp-content/*
 # WordPress Starter Dev Files
 /docker-compose.yml
 
-# Ignore the content of the code forlder
+# Ignore the content of the code folder
+/projects/stokpress/uploads/
 /projects/stellar/code/
 /projects/skhoop/code/
 /projects/linum/code/
+/projects/stinaaj/code/
+/projects/nutrilett/code/
 
 # Ignore the uploads
 /projects/stokpress/uploads/
 /projects/stellar/uploads/
 /projects/skhoop/uploads/
 /projects/linum/uploads/
-projects/stinaaj/uploads/
+/projects/stinaaj/uploads/
+/projects/nutrilett/uploads/
