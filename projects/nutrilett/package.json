@@ -4,7 +4,9 @@
   "scripts": {
     "wp": "docker-compose exec wordpress bash"
   },
-  "dependencies": {},
+  "dependencies": {
+    "sticky-sidebar": "^3.3.1"
+  },
   "devDependencies": {
     "chalk": "^1.1.0",
     "dateformat": "^1.0.11",
